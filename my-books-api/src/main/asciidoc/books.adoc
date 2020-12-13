@@ -1,0 +1,10 @@
+= Book Controller Spring REST Docs
+
+.request
+include::{snippets}/books/get/http-request.adoc[]
+
+.response
+include::{snippets}/books/get/http-response.adoc[]
+
+.response-fields
+include::{snippets}/books/get/response-fields.adoc[]

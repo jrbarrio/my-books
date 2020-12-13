@@ -1,8 +1,8 @@
-package com.roldan.mybooks.api.controllers;
+package com.roldan.mybooks.api.v1.controllers;
 
-import com.roldan.mybooks.api.contollers.HomeController;
+import com.roldan.mybooks.api.v1.contollers.BookController;
+import com.roldan.mybooks.api.v2.controllers.HomeController;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,19 +17,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(HomeController.class)
+@WebMvcTest(BookController.class)
 @AutoConfigureRestDocs(outputDir = "build/generated-snippets")
-public class HomeControllerTest {
+public class BookControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, World")))
-                .andDo(document("home", responseFields(
-                        fieldWithPath("message").description("The welcome message for the user.")
+        this.mockMvc.perform(get("/v1/books")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Black Swan")))
+                .andDo(document("books/get", responseFields(
+                        fieldWithPath("books").description("My list of books")
                 )));
     }
 }
