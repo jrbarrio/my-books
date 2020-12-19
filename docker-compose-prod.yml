@@ -1,15 +1,22 @@
 version: '3'
 
 services:
+  discovery-service:
+    container_name: discovery_service_prod
+    build:
+      context: discovery-service
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
   api:
-    container_name: my-books-api-prod
+    container_name: my_books_api_prod
     build:
       context: api
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
   frontend-prod:
-    container_name: my-books-frontend-prod
+    container_name: my_books_frontend_prod
     build:
       context: frontend
       dockerfile: Dockerfile.prod

@@ -1,15 +1,24 @@
 version: '3'
 
 services:
+  discovery-service:
+    container_name: discovery_service_dev
+    build:
+      context: discovery-service
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
   api:
-    container_name: my-books-api-dev
+    container_name: my_books_api_dev
     build:
       context: api
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
+    links:
+      - "discovery-service:eureka"
   frontend:
-    container_name: my-books-frontend-dev
+    container_name: my_books_frontend_dev
     build:
       context: frontend
       dockerfile: Dockerfile
