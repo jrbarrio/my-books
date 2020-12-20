@@ -17,6 +17,15 @@ services:
       - "8081:8081"
     links:
       - "discovery-service:eureka"
+  api-client:
+    container_name: my_books_api_client_dev
+    build:
+      context: api-client
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    links:
+      - "discovery-service:eureka"
   frontend:
     container_name: my_books_frontend_dev
     build:

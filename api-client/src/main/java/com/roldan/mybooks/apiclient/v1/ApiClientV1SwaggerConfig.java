@@ -1,4 +1,4 @@
-package com.roldan.mybooks.api.v1;
+package com.roldan.mybooks.apiclient.v1;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +14,13 @@ import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
-public class ApiV1SwaggerConfig {
+public class ApiClientV1SwaggerConfig {
 
     @Bean
     public Docket apiV1Docket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.roldan.mybooks.api.v1.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.roldan.mybooks.apiclient.v1.controllers"))
                 .paths(PathSelectors.ant("/v1/*"))
                 .build()
                 .groupName("v1")
@@ -29,8 +29,8 @@ public class ApiV1SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "My Books Service API",
-                "My Books Service API Description",
+                "My Books Service API Client",
+                "My Books Service API Client Description",
                 "1.0",
                 "http://roldan.com/terms",
                 new Contact("Jorge", "https://roldan.com", "jorge.roldan@roldan.com"),
