@@ -13,6 +13,8 @@ services:
     build:
       context: api
       dockerfile: Dockerfile
+    depends_on:
+      - discovery-service
     ports:
       - "8081:8081"
     links:
@@ -22,12 +24,17 @@ services:
     build:
       context: api-client
       dockerfile: Dockerfile
+    depends_on:
+      - discovery-service
+      - api
     ports:
       - "8082:8082"
     links:
       - "discovery-service:eureka"
   frontend:
     container_name: my_books_frontend_dev
+    depends_on:
+      - api
     build:
       context: frontend
       dockerfile: Dockerfile

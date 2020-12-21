@@ -14,7 +14,7 @@ my-books-api:
   ribbon:
     eureka:
       enabled: true
-    ServerListRefreshInterval: 15000
+    ServerListRefreshInterval: 1000
 
 ---
 spring:
