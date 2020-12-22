@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { docker { image 'gradle:jdk15' } }
     stages {
-        stage('First stage') {
+        stage('Get Gradle version') {
             steps {
-                echo 'Hello world!'
+                sh 'gradle --version'
             }
         }
     }
